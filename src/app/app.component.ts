@@ -1,10 +1,21 @@
-import { Component } from '@angular/core';
+import { OnInit } from "@angular/core";
+import { AuthService } from "./_Services/Auth.service";
+import { Component } from "@angular/core";
+import { JwtHelperService } from "@auth0/angular-jwt";
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  selector: "app-root",
+  templateUrl: "./app.component.html",
+  styleUrls: ["./app.component.css"]
 })
-export class AppComponent {
-  title = 'GreatUI';
+export class AppComponent implements OnInit {
+  jwtHelper = new JwtHelperService();
+  constructor(public authService: AuthService) {}
+
+  ngOnInit() {
+    const token = localStorage.getItem("token");
+    if (token) {
+      this.authService.decodedToken = this.jwtHelper.decodeToken(token);
+    }
+  }
 }
