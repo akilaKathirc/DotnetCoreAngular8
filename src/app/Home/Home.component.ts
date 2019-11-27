@@ -14,7 +14,7 @@ export class HomeComponent implements OnInit {
     private http: HttpClient,
     private alertifyService: AlertifyService
   ) {
-    this.getValues();
+  //  this.getValues();
   }
 
   Register() {

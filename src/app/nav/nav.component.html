@@ -1,7 +1,7 @@
 <div class="container bg-primary">
 
   <nav class="navbar navbar-expand-md navbar-dark">
-    <a class="navbar-brand" href="#">Dating App</a>
+    <a class="navbar-brand" [routerLink]="['/home']" routerLinkActive="active">Dating App</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
       aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -9,37 +9,37 @@
 
     <div class="collapse navbar-collapse" *ngIf="loggedIn()" id="navbarsExampleDefault">
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="#">Matches</a>
+        <li class="nav-item" routerLinkActive="active">
+          <a class="nav-link" [routerLink]="['/members']">Matches</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Lists</a>
+        <li class="nav-item" routerLinkActive="active">
+          <a class="nav-link" [routerLink]="['/lists']" href="#">Lists</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Messages</a>
+        <li class="nav-item" routerLinkActive="active">
+          <a class="nav-link" [routerLink]="['/messages']">Messages</a>
         </li>
       </ul>
 
-
-
-      <div class="dropdown" *ngIf="loggedIn()" dropdown>
-        <button class="dropdown-toggle btn-success btn" dropdownToggle>
-          Welcome {{authService.decodedToken?.unique_name || titlecase}}
-        </button>
-        <div class="dropdown-menu mt-2" *dropdownMenu>
-          <a class="dropdown-item" href="#"><i class="fa fa-user"></i>Edit Profile</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#"><i class="fa fa-sign-out" (click)="loggedOut()"></i>Log Out</a>
-        </div>
-      </div>
-
-
-      <form *ngIf="!loggedIn()" class="form-inline my-2 my-lg-0" [formGroup]="loginForm">
-        <input class="form-control mr-sm-2" type="text" formControlName="userName">
-        <input class="form-control mr-sm-2" type="password" formControlName="password">
-        <button [disabled]="!loginForm.valid" class="btn btn-success my-2 my-sm-0" type="submit"
-          (click)="SubmitLogin()">Login</button>
-      </form>
     </div>
+
+    <div class="dropdown" *ngIf="loggedIn()" dropdown>
+      <button class="dropdown-toggle btn-success btn" dropdownToggle>
+        Welcome {{authService.decodedToken?.unique_name || titlecase}}
+      </button>
+      <div class="dropdown-menu mt-2" *dropdownMenu>
+        <a class="dropdown-item"><i class="fa fa-user"></i>Edit Profile</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" (click)="loggedOut()"><i class="fa fa-sign-out"></i>Log Out</a>
+      </div>
+    </div>
+
+
+    <form *ngIf="!loggedIn()" class="form-inline my-2 my-lg-0 ml-auto" [formGroup]="loginForm">
+      <input class="form-control mr-sm-2" type="text" formControlName="userName">
+      <input class="form-control mr-sm-2" type="password" formControlName="password">
+      <button [disabled]="!loginForm.valid" class="btn btn-success my-2 my-sm-0" type="submit"
+        (click)="SubmitLogin()">Login</button>
+    </form>
+
   </nav>
 </div>

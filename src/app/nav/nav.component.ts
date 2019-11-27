@@ -3,6 +3,7 @@ import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormControl, Validators } from "@angular/forms";
 import { AuthService } from "../_Services/Auth.service";
 import { Subscriber } from "rxjs";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-nav",
@@ -13,7 +14,8 @@ export class NavComponent implements OnInit {
   loginForm: FormGroup;
   constructor(
     private authService: AuthService,
-    private alertifyService: AlertifyService
+    private alertifyService: AlertifyService,
+    private router: Router
   ) {
     this.loginForm = new FormGroup({
       userName: new FormControl("name", [Validators.required]),
@@ -21,7 +23,11 @@ export class NavComponent implements OnInit {
     });
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    if (this.authService.loggedIn()) {
+      this.router.navigate(["/members"]);
+    }
+  }
 
   SubmitLogin() {
     const loginModel = {
@@ -34,6 +40,9 @@ export class NavComponent implements OnInit {
       },
       error => {
         this.alertifyService.error("Unauthourized");
+      },
+      () => {
+        this.router.navigate(["/members"]);
       }
     );
   }
@@ -45,5 +54,6 @@ export class NavComponent implements OnInit {
   loggedOut() {
     localStorage.removeItem("token");
     this.alertifyService.message("logged out successful");
+    this.router.navigate(["/home"]);
   }
 }
