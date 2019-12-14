@@ -1,3 +1,5 @@
+import { TimeAgoPipe } from 'time-ago-pipe';
+import { PhotoEditorComponent } from "./member/photo-editor/photo-editor.component";
 import { MemberEditResolver } from "./_resolve/member-edit.resolver";
 import { HttpClientModule } from "@angular/common/http";
 import { ReactiveFormsModule } from "@angular/forms";
@@ -28,7 +30,9 @@ import { TabsModule } from "ngx-bootstrap";
 import { MemberDetailResolver } from "./_resolve/member-detail.resolver";
 import { MemberListResolver } from "./_resolve/member-list.resolver";
 import { MemberEditComponent } from "./member/member-edit/member-edit.component";
-import { PreventUnsavedChanges } from './_guards/preven-unsaved-changes.guard';
+import { PreventUnsavedChanges } from "./_guards/preven-unsaved-changes.guard";
+import { FileUploadModule } from 'ng2-file-upload';
+
 
 export function tokenGetter() {
   return localStorage.getItem("token");
@@ -52,7 +56,9 @@ export class CustomHammerConfig extends HammerGestureConfig {
     MessagesComponent,
     MemberCardComponent,
     MemberDetailComponent,
-    MemberEditComponent
+    MemberEditComponent,
+    PhotoEditorComponent,
+    TimeAgoPipe
   ],
   imports: [
     TabsModule.forRoot(),
@@ -70,7 +76,8 @@ export class CustomHammerConfig extends HammerGestureConfig {
         blacklistedRoutes: ["localhost:44342/api/auth"]
       }
     }),
-    NgxGalleryModule
+    NgxGalleryModule,
+    FileUploadModule
   ],
   providers: [
     ErrorInterceptorProvider,

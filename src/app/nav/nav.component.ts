@@ -12,8 +12,9 @@ import { Router } from "@angular/router";
 })
 export class NavComponent implements OnInit {
   loginForm: FormGroup;
+  UserPhotoUrl:string;
   constructor(
-    private authService: AuthService,
+    public authService: AuthService,
     private alertifyService: AlertifyService,
     private router: Router
   ) {
@@ -21,6 +22,11 @@ export class NavComponent implements OnInit {
       userName: new FormControl("name", [Validators.required]),
       password: new FormControl("password")
     });
+     this.authService.bSubject.subscribe(photoUrl => {
+       if (photoUrl) {
+         this.UserPhotoUrl = photoUrl;
+       }
+     });
   }
 
   ngOnInit() {
@@ -53,7 +59,11 @@ export class NavComponent implements OnInit {
 
   loggedOut() {
     localStorage.removeItem("token");
-    this.alertifyService.message("logged out successful");
+     localStorage.removeItem("user");
+     this.authService.decodedToken = null;
+     this.authService.currentUser = null;
+     
+     this.alertifyService.message("logged out successful");
     this.router.navigate(["/home"]);
   }
 }

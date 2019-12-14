@@ -27,12 +27,12 @@
 
           <div>
             <strong>Last Active:</strong>
-            <p class="card-text">{{user.lastActive}} </p>
+            <p class="card-text">{{user.lastActive| timeAgo}} </p>
           </div>
 
           <div>
             <strong>Member Since:</strong>
-            <p class="card-text">{{user.created}} </p>
+            <p class="card-text">{{user.created| date:'medium'}} </p>
           </div>
         </div>
         <div class="card-footer">
@@ -53,9 +53,9 @@
               <h4>Introduction:</h4>
               <textarea formControlName="introduction" cols="30" rows="10" class="form-control"></textarea>
               <h4>Looking For:</h4>
-              <textarea formControlName="lookingfor" cols="30" rows="10" class="form-control"></textarea>
+              <textarea formControlName="lookingFor" cols="30" rows="10" class="form-control"></textarea>
               <h4>Interests:</h4>
-              <textarea formControlName="interests" cols="30" rows="10" class="form-control"></textarea>
+              <textarea formControlName="interest" cols="30" rows="10" class="form-control"></textarea>
               <div class="form-inline">
                 <label for="city">City</label>
                 <input type="text" class="form-control" name="city" formControlName="city">
@@ -65,7 +65,7 @@
             </form>
           </tab>
           <tab heading="Edit Photos">
-            <p>Photos edit goes here</p>
+            <app-photo-editor [photos]="user.photos" (getMemberChangeEvent)="SetMainPhoto($event)"></app-photo-editor>
           </tab>
         </tabset>
       </div>

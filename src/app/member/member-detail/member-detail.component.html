@@ -2,7 +2,7 @@
   <div class="row">
     <h1>{{user?.knownAs}}'s Profile</h1>
   </div>
-  <div class="row">
+  <div class="row box">
     <div class="col-sm-4 col-md-4 col-lg-4">
       <div class="card" style="width: 18rem;">
         <img src="{{user?.photoUrl}}" class="card-img-top img-thumbnail" alt="{{user?.knownAs}}">
@@ -19,12 +19,12 @@
 
           <div>
             <strong>Last Active:</strong>
-            <p class="card-text">{{user?.lastActive}} </p>
+            <p class="card-text">{{user?.lastActive| timeAgo}} </p>
           </div>
 
           <div>
             <strong>Member Since:</strong>
-            <p class="card-text">{{user?.created}} </p>
+            <p class="card-text">{{user?.created| date:'medium'}} </p>
           </div>
         </div>
         <div class="card-footer">
