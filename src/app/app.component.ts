@@ -21,7 +21,7 @@ export class AppComponent implements OnInit, OnDestroy {
     }
     if (user) {
       this.authService.currentUser = user;
-      this.authService.bSubject.next(this.authService.currentUser.photoUrl);
+      this.authService.changeMemberPhoto(this.authService.currentUser.photoUrl);
       this.authService.currentUser.photoUrl = this.authService.currentUser.photoUrl;
     }
   }

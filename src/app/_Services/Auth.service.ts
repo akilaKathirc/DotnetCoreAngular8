@@ -31,11 +31,16 @@ export class AuthService {
           localStorage.setItem("token", userDetails["token"]);
   localStorage.setItem("user", JSON.stringify(userDetails["user"]));
 this.currentUser = userDetails["user"];
-this.bSubject.next(this.currentUser.photoUrl);
+this.changeMemberPhoto(this.currentUser.photoUrl);
         }
       })
     );
   }
+
+
+changeMemberPhoto(photoUrl:string){
+  this.bSubject.next(photoUrl);
+}
 
   Register(registermodel: any) {
     return this._http.post(`${this.loginUrl}${"register"}`, registermodel);

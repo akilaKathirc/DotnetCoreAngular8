@@ -32,6 +32,7 @@ import { MemberListResolver } from "./_resolve/member-list.resolver";
 import { MemberEditComponent } from "./member/member-edit/member-edit.component";
 import { PreventUnsavedChanges } from "./_guards/preven-unsaved-changes.guard";
 import { FileUploadModule } from 'ng2-file-upload';
+import { BsDatepickerModule } from "ngx-bootstrap";
 
 
 export function tokenGetter() {
@@ -77,7 +78,9 @@ export class CustomHammerConfig extends HammerGestureConfig {
       }
     }),
     NgxGalleryModule,
-    FileUploadModule
+    FileUploadModule,
+    BrowserAnimationsModule,
+    BsDatepickerModule.forRoot()
   ],
   providers: [
     ErrorInterceptorProvider,
