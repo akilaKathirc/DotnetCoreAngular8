@@ -33,6 +33,9 @@ import { MemberEditComponent } from "./member/member-edit/member-edit.component"
 import { PreventUnsavedChanges } from "./_guards/preven-unsaved-changes.guard";
 import { FileUploadModule } from 'ng2-file-upload';
 import { BsDatepickerModule } from "ngx-bootstrap";
+import { GlowingborderComponent } from './glowingborder/glowingborder.component';
+import { GlowingtextComponent } from './glowingtext/glowingtext.component';
+import { GlowingloaderComponent } from './glowingloader/glowingloader.component';
 
 
 export function tokenGetter() {
@@ -59,7 +62,10 @@ export class CustomHammerConfig extends HammerGestureConfig {
     MemberDetailComponent,
     MemberEditComponent,
     PhotoEditorComponent,
-    TimeAgoPipe
+    TimeAgoPipe,
+    GlowingborderComponent,
+    GlowingtextComponent,
+    GlowingloaderComponent
   ],
   imports: [
     TabsModule.forRoot(),

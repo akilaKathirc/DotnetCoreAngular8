@@ -1,14 +1,31 @@
 <div class="container bg-primary">
 
   <nav class="navbar navbar-expand-md navbar-dark">
-    <a class="navbar-brand" [routerLink]="['/home']" routerLinkActive="active">Dating App</a>
+    <a class="navbar-brand" [routerLink]="['/home']" routerLinkActive="active">
+      
+    
+      <span>D</span>
+      <span>a</span>
+      <span>t</span>
+      <span>i</span>
+      <span>n</span>
+      <span class="mr-2">g</span>
+
+      <span>A</span>
+      <span>p</span>
+      <span>p</span>
+
+    
+    
+    
+    </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
       aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
     <div class="collapse navbar-collapse" *ngIf="loggedIn()" id="navbarsExampleDefault">
-      <ul class="navbar-nav mr-auto">
+      <ul class="navbar-nav">
         <li class="nav-item" routerLinkActive="active">
           <a class="nav-link" [routerLink]="['/members']">Matches</a>
         </li>
@@ -19,6 +36,20 @@
           <a class="nav-link" [routerLink]="['/messages']">Messages</a>
         </li>
       </ul>
+
+
+      <div class="dropdown mr-auto"  dropdown>
+        <button class="dropdown-toggle btn-success btn" dropdownToggle>
+         Glowing Animations
+        </button>
+        <div class="dropdown-menu mt-2" *dropdownMenu>
+           <a  class="text-light dropdown-item" [routerLink]="['/glowingborder']">Glowing Border</a>
+              <div class="dropdown-divider"></div>
+            <a class="text-light dropdown-item"  [routerLink]="['/glowingtext']">Glowing Text</a>
+            <div class="dropdown-divider"></div>
+            <a class="text-light dropdown-item" [routerLink]="['/glowingloader']">Glowing loader</a>
+        </div>
+      </div>
 
     </div>
 
